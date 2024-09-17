@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { InfoContact } from './info-contact';
 import { Title } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -9,7 +10,7 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
-export class ProfileComponent implements  OnInit{
+export class ProfileComponent implements OnInit {
   title = 'Ma Seo Sen | Software Engineer';
   faviconUrl = 'https://github.com/fluidicon.png';
 
@@ -43,7 +44,10 @@ export class ProfileComponent implements  OnInit{
     },
   ];
 
-  constructor(private titleService: Title) {}
+  constructor(
+    private titleService: Title,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit(): void {
     this.titleService.setTitle(this.title);
@@ -51,15 +55,19 @@ export class ProfileComponent implements  OnInit{
   }
 
   setFavicon(url: string): void {
-    const link: HTMLLinkElement = document.querySelector("link[rel*='icon']") || document.createElement('link');
-    link.type = 'image/x-icon';
-    link.rel = 'shortcut icon';
-    link.href = url;
-    document.getElementsByTagName('head')[0].appendChild(link);
+    if (isPlatformBrowser(this.platformId)) {
+      const link: HTMLLinkElement =
+        document.querySelector("link[rel*='icon']") ||
+        document.createElement('link');
+      link.type = 'image/x-icon';
+      link.rel = 'shortcut icon';
+      link.href = url;
+      document.getElementsByTagName('head')[0].appendChild(link);
+    }
   }
 
   sendMessage() {
-    window.open('https://m.me/100052913680064', '_blank');
+    window.open('https://zalo.me/0369962642', '_blank');
   }
   contact() {
     window.open('https://zalo.me/0369962642', '_blank');
