@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-7">
+      <div class="card p-3 py-4">
+        <div class="text-center">
+          <img
+            src="https://scontent-hkg1-1.xx.fbcdn.net/v/t39.30808-1/428604449_919341093173005_175439117143595983_n.jpg?stp=dst-jpg_s200x200&_nc_cat=101&ccb=1-7&_nc_sid=0ecb9b&_nc_ohc=SJMwm__cFNYQ7kNvgHD5Rij&_nc_ht=scontent-hkg1-1.xx&_nc_gid=AOvO1TTNnMWjf407e0ieZDU&oh=00_AYCGZKgvHSqM-v0OOT62qpI4jXcZhur3t6oLg6x6QmGZvg&oe=66EEFB32"
+            width="100"
+            class="rounded-circle"
+          />
+        </div>
+
+        <div class="text-center mt-3">
+          <span class="bg-pro p-1 px-4 rounded text-white">Pro</span>
+          <h5 class="mt-2 mb-0">Ma Seo Sen</h5>
+          <span>Developer | Software Engineer</span>
+
+          <div class="px-4 mt-1">
+            <p class="fonts">
+             Cung cấp giải pháp cho các MMO online, Dịch vụ thiết kế website/app. SEO tăng tương tác trên mạng xã hội, tăng doanh số bán hàng.
+            </p>
+          </div>
+          <ul class="social-list">
+            @for (item of infos; track $index) {
+              <li id="{{item.id}}">
+                <a href="{{item.url}}" [title]="item.name">
+                  <i class="{{item.icon}}"></i>
+                </a>
+              </li>
+            }
+
+          </ul>
+
+          <div class="buttons">
+            <button (click)="sendMessage()" class="btn btn-outline-primary px-4">Nhắn tin</button>
+            <button (click)="contact()" class="btn btn-primary px-4 ms-3">Liên hệ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
